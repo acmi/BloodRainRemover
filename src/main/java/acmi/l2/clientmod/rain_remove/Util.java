@@ -22,7 +22,7 @@
 package acmi.l2.clientmod.rain_remove;
 
 import acmi.l2.clientmod.io.BufferUtil;
-import acmi.l2.clientmod.io.UnrealPackageFile;
+import acmi.l2.clientmod.io.UnrealPackage;
 
 import java.io.FileFilter;
 import java.nio.BufferUnderflowException;
@@ -41,7 +41,7 @@ public class Util {
         BufferUtil.getCompactInt(buffer);
     }
 
-    public static void iterateProperties(ByteBuffer buffer, UnrealPackageFile up, TriConsumer<String, Integer, ByteBuffer> func) throws BufferUnderflowException {
+    public static void iterateProperties(ByteBuffer buffer, UnrealPackage up, TriConsumer<String, Integer, ByteBuffer> func) throws BufferUnderflowException {
         String name;
         while (!"None".equals(name = up.getNameTable().get(BufferUtil.getCompactInt(buffer)).getName())) {
             byte info = buffer.get();
